@@ -399,9 +399,6 @@ class _ECommerceScreenState extends State<ECommerceScreen> {
               ),
             ),
           ),
-          const Expanded(
-            child: SizedBox(),
-          ),
           Positioned(
             top: 0,
             left: 0,
@@ -413,7 +410,7 @@ class _ECommerceScreenState extends State<ECommerceScreen> {
                 child: Stack(
                   children: [
                     Container(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         horizontal: 16,
                       ),
                       height: 80,
@@ -469,11 +466,11 @@ class _ECommerceScreenState extends State<ECommerceScreen> {
                               color: Colors.grey[100],
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            child: Icon(
+                            child: const Icon(
                               Icons.notifications_outlined,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 16,
                           ),
                           Container(
@@ -483,14 +480,14 @@ class _ECommerceScreenState extends State<ECommerceScreen> {
                               color: Colors.grey[100],
                               borderRadius: BorderRadius.circular(30),
                             ),
-                            child: Icon(
+                            child: const Icon(
                               Icons.chat_bubble_outline_outlined,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 16,
                           ),
-                          Container(
+                          SizedBox(
                             height: 60,
                             width: 250,
                             child: Row(
@@ -500,7 +497,7 @@ class _ECommerceScreenState extends State<ECommerceScreen> {
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text(
+                                      const Text(
                                         "Fulan bin Fulan",
                                         style: TextStyle(
                                           fontSize: 16,
@@ -516,7 +513,7 @@ class _ECommerceScreenState extends State<ECommerceScreen> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 8,
                                 ),
                                 Container(
@@ -527,10 +524,10 @@ class _ECommerceScreenState extends State<ECommerceScreen> {
                                     borderRadius: BorderRadius.circular(60),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 8,
                                 ),
-                                Icon(
+                                const Icon(
                                   Icons.keyboard_arrow_down_outlined,
                                 ),
                               ],
