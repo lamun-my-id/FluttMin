@@ -113,106 +113,132 @@ class _WrapperComponentState extends State<WrapperComponent> {
                                         navigateTo: "dashboard",
                                         subMenu: [
                                           SubMenuModel(
-                                              name: "eCommerce",
-                                              navigateTo:
-                                                  "dashboard/ecommerce"),
+                                            name: "eCommerce",
+                                            navigateTo: "dashboard/ecommerce",
+                                          ),
                                           SubMenuModel(
-                                              name: "Analitycs",
-                                              navigateTo:
-                                                  "dashboard/analitycs"),
+                                            name: "Analitycs",
+                                            navigateTo: "dashboard/analitycs",
+                                          ),
                                           SubMenuModel(
-                                              name: "Marketing",
-                                              navigateTo:
-                                                  "dashboard/marketing"),
+                                            name: "Marketing",
+                                            navigateTo: "dashboard/marketing",
+                                          ),
                                           SubMenuModel(
-                                              name: "CRM",
-                                              navigateTo: "dashboard/crm"),
+                                            name: "CRM",
+                                            navigateTo: "dashboard/crm",
+                                          ),
                                           SubMenuModel(
-                                              name: "Stocks",
-                                              navigateTo: "dashboard/stocks"),
+                                            name: "Stocks",
+                                            navigateTo: "dashboard/stocks",
+                                          ),
                                         ],
                                       ),
                                       MenuModel(
                                         name: "Calendar",
                                         icon: Icons.calendar_month_outlined,
-                                        navigateTo: "dashboard",
+                                        navigateTo: "calendar",
                                       ),
                                       MenuModel(
                                         name: "Profile",
                                         icon: Icons.account_box_outlined,
-                                        navigateTo: "dashboard",
+                                        navigateTo: "profile",
                                       ),
                                       MenuModel(
                                         name: "Task",
                                         icon: Icons.list_alt_outlined,
-                                        navigateTo: "dashboard",
+                                        navigateTo: "task",
                                         subMenu: [
                                           SubMenuModel(
-                                              name: "List", navigateTo: ""),
+                                            name: "List",
+                                            navigateTo: "task/list",
+                                          ),
                                           SubMenuModel(
-                                              name: "Kanban", navigateTo: ""),
+                                            name: "Kanban",
+                                            navigateTo: "task/kanban",
+                                          ),
                                         ],
                                       ),
                                       MenuModel(
                                         name: "Forms",
                                         icon: Icons.document_scanner_outlined,
-                                        navigateTo: "dashboard",
+                                        navigateTo: "forms",
                                         subMenu: [
                                           SubMenuModel(
-                                              name: "Form Elements",
-                                              navigateTo: ""),
+                                            name: "Form Elements",
+                                            navigateTo: "forms/form_elements",
+                                          ),
                                           SubMenuModel(
-                                              name: "Pro Form ELements",
-                                              navigateTo: ""),
+                                            name: "Pro Form Elements",
+                                            navigateTo:
+                                                "forms/pro_form_elements",
+                                          ),
                                           SubMenuModel(
-                                              name: "Form Layout",
-                                              navigateTo: ""),
+                                            name: "Form Layout",
+                                            navigateTo: "forms/form_layout",
+                                          ),
                                           SubMenuModel(
-                                              name: "Pro Form Layout",
-                                              navigateTo: ""),
+                                            name: "Pro Form Layout",
+                                            navigateTo: "forms/pro_form_layout",
+                                          ),
                                         ],
                                       ),
                                       MenuModel(
                                         name: "Tables",
                                         icon: Icons.table_chart_outlined,
-                                        navigateTo: "dashboard",
+                                        navigateTo: "tables",
                                         subMenu: [
                                           SubMenuModel(
-                                              name: "Tables", navigateTo: ""),
+                                            name: "Tables",
+                                            navigateTo: "tables/tables",
+                                          ),
                                           SubMenuModel(
-                                              name: "Pro Tables",
-                                              navigateTo: ""),
+                                            name: "Pro Tables",
+                                            navigateTo: "tables/pro_tables",
+                                          ),
                                         ],
                                       ),
                                       MenuModel(
                                         name: "Pages",
                                         icon: Icons.web_outlined,
-                                        navigateTo: "dashboard",
+                                        navigateTo: "pages",
                                         subMenu: [
                                           SubMenuModel(
-                                              name: "Settings", navigateTo: ""),
+                                            name: "Settings",
+                                            navigateTo: "pages/settings",
+                                          ),
                                           SubMenuModel(
-                                              name: "File Manager",
-                                              navigateTo: ""),
+                                            name: "File Manager",
+                                            navigateTo: "pages/file_manager",
+                                          ),
                                           SubMenuModel(
-                                              name: "Data Tables",
-                                              navigateTo: ""),
+                                            name: "Data Tables",
+                                            navigateTo: "pages/data_tables",
+                                          ),
                                           SubMenuModel(
-                                              name: "Pricing Tables",
-                                              navigateTo: ""),
+                                            name: "Pricing Tables",
+                                            navigateTo: "pages/pricing_tables",
+                                          ),
                                           SubMenuModel(
-                                              name: "Error Page",
-                                              navigateTo: ""),
+                                            name: "Error Page",
+                                            navigateTo: "pages/error_pages",
+                                          ),
                                           SubMenuModel(
-                                              name: "Faq's", navigateTo: ""),
+                                            name: "Faq's",
+                                            navigateTo: "pages/faqs",
+                                          ),
                                           SubMenuModel(
-                                              name: "Teams", navigateTo: ""),
+                                            name: "Teams",
+                                            navigateTo: "pages/teams",
+                                          ),
                                           SubMenuModel(
-                                              name: "Terms & Conditions",
-                                              navigateTo: ""),
+                                            name: "Terms & Conditions",
+                                            navigateTo: "pages/tnc",
+                                          ),
                                           SubMenuModel(
-                                              name: "Mail Success",
-                                              navigateTo: ""),
+                                            name: "Mail Success",
+                                            navigateTo: "pages/mail_success",
+                                          ),
                                         ],
                                       ),
                                     ].map((e) {
@@ -247,17 +273,17 @@ class _WrapperComponentState extends State<WrapperComponent> {
                                       MenuModel(
                                         name: "Messages",
                                         icon: Icons.mail_outline,
-                                        navigateTo: "dashboard",
+                                        navigateTo: "messages",
                                       ),
                                       MenuModel(
                                         name: "Inbox",
                                         icon: Icons.inbox_outlined,
-                                        navigateTo: "dashboard",
+                                        navigateTo: "inbox",
                                       ),
                                       MenuModel(
                                         name: "Invoice",
                                         icon: Icons.inventory_outlined,
-                                        navigateTo: "dashboard",
+                                        navigateTo: "invoice",
                                       ),
                                     ].map((e) {
                                       return Padding(
@@ -291,92 +317,148 @@ class _WrapperComponentState extends State<WrapperComponent> {
                                       MenuModel(
                                         name: "Charts",
                                         icon: Icons.line_axis_outlined,
-                                        navigateTo: "dashboard",
+                                        navigateTo: "charts",
                                         subMenu: [
                                           SubMenuModel(
-                                              name: "Basic Chart",
-                                              navigateTo: ""),
+                                            name: "Basic Chart",
+                                            navigateTo: "charts/basic_chart",
+                                          ),
                                           SubMenuModel(
-                                              name: "Advanced Chart",
-                                              navigateTo: ""),
+                                            name: "Advanced Chart",
+                                            navigateTo: "charts/advanced_chart",
+                                          ),
                                         ],
                                       ),
                                       MenuModel(
                                         name: "UI Elements",
                                         icon: Icons.now_widgets_outlined,
-                                        navigateTo: "dashboard",
+                                        navigateTo: "ui_elements",
                                         subMenu: [
                                           SubMenuModel(
-                                              name: "Accordion",
-                                              navigateTo: ""),
+                                            name: "Accordion",
+                                            navigateTo: "ui_elements/accordion",
+                                          ),
                                           SubMenuModel(
-                                              name: "Alerts", navigateTo: ""),
+                                            name: "Alerts",
+                                            navigateTo: "ui_elements/alerts",
+                                          ),
                                           SubMenuModel(
-                                              name: "Avatar", navigateTo: ""),
+                                            name: "Avatar",
+                                            navigateTo: "ui_elements/avatar",
+                                          ),
                                           SubMenuModel(
-                                              name: "Badge", navigateTo: ""),
+                                            name: "Badge",
+                                            navigateTo: "ui_elements/badge",
+                                          ),
                                           SubMenuModel(
-                                              name: "Breadcrumb",
-                                              navigateTo: ""),
+                                            name: "Breadcrumb",
+                                            navigateTo:
+                                                "ui_elements/breadcrumb",
+                                          ),
                                           SubMenuModel(
-                                              name: "Buttons", navigateTo: ""),
+                                            name: "Buttons",
+                                            navigateTo: "ui_elements/buttons",
+                                          ),
                                           SubMenuModel(
-                                              name: "Buttons Group",
-                                              navigateTo: ""),
+                                            name: "Buttons Group",
+                                            navigateTo:
+                                                "ui_elements/button_group",
+                                          ),
                                           SubMenuModel(
-                                              name: "Cards", navigateTo: ""),
+                                            name: "Cards",
+                                            navigateTo: "ui_elements/cards",
+                                          ),
                                           SubMenuModel(
-                                              name: "Carousel", navigateTo: ""),
+                                            name: "Carousel",
+                                            navigateTo: "ui_elements/carousel",
+                                          ),
                                           SubMenuModel(
-                                              name: "Dropdowns",
-                                              navigateTo: ""),
+                                            name: "Dropdowns",
+                                            navigateTo: "ui_elements/dropdowns",
+                                          ),
                                           SubMenuModel(
-                                              name: "Images", navigateTo: ""),
+                                            name: "Images",
+                                            navigateTo: "ui_elements/images",
+                                          ),
                                           SubMenuModel(
-                                              name: "List", navigateTo: ""),
+                                            name: "List",
+                                            navigateTo: "ui_elements/list",
+                                          ),
                                           SubMenuModel(
-                                              name: "Modals", navigateTo: ""),
+                                            name: "Modals",
+                                            navigateTo: "ui_elements/modals",
+                                          ),
                                           SubMenuModel(
-                                              name: "Notifications",
-                                              navigateTo: ""),
+                                            name: "Notifications",
+                                            navigateTo:
+                                                "ui_elements/notifications",
+                                          ),
                                           SubMenuModel(
-                                              name: "Pagination",
-                                              navigateTo: ""),
+                                            name: "Pagination",
+                                            navigateTo:
+                                                "ui_elements/pagination",
+                                          ),
                                           SubMenuModel(
-                                              name: "Popovers", navigateTo: ""),
+                                            name: "Popovers",
+                                            navigateTo: "ui_elements/popovers",
+                                          ),
                                           SubMenuModel(
-                                              name: "Progress", navigateTo: ""),
+                                            name: "Progress",
+                                            navigateTo: "ui_elements/progress",
+                                          ),
                                           SubMenuModel(
-                                              name: "Spinners", navigateTo: ""),
+                                            name: "Spinners",
+                                            navigateTo: "ui_elements/spinners",
+                                          ),
                                           SubMenuModel(
-                                              name: "Tabs", navigateTo: ""),
+                                            name: "Tabs",
+                                            navigateTo: "ui_elements/tabs",
+                                          ),
                                           SubMenuModel(
-                                              name: "Tooltips", navigateTo: ""),
+                                            name: "Tooltips",
+                                            navigateTo: "ui_elements/tooltips",
+                                          ),
                                           SubMenuModel(
-                                              name: "Videos", navigateTo: ""),
+                                            name: "Videos",
+                                            navigateTo: "ui_elements/videos",
+                                          ),
                                         ],
                                       ),
                                       MenuModel(
                                         name: "Authentication",
                                         icon: Icons.logout_outlined,
-                                        navigateTo: "dashboard",
+                                        navigateTo: "authentication",
                                         subMenu: [
                                           SubMenuModel(
-                                              name: "Sign In", navigateTo: ""),
+                                            name: "Sign In",
+                                            navigateTo:
+                                                "authentication/sign_in",
+                                          ),
                                           SubMenuModel(
-                                              name: "Sign Up", navigateTo: ""),
+                                            name: "Sign Up",
+                                            navigateTo:
+                                                "authentication/sign_up",
+                                          ),
                                           SubMenuModel(
-                                              name: "Reset Password",
-                                              navigateTo: ""),
+                                            name: "Reset Password",
+                                            navigateTo:
+                                                "authentication/reset_password",
+                                          ),
                                           SubMenuModel(
-                                              name: "Coming Soon",
-                                              navigateTo: ""),
+                                            name: "Coming Soon",
+                                            navigateTo:
+                                                "authentication/coming_soon",
+                                          ),
                                           SubMenuModel(
-                                              name: "2 Step Verification",
-                                              navigateTo: ""),
+                                            name: "2 Step Verification",
+                                            navigateTo:
+                                                "authentication/2_step_verification",
+                                          ),
                                           SubMenuModel(
-                                              name: "Under Maintenance",
-                                              navigateTo: ""),
+                                            name: "Under Maintenance",
+                                            navigateTo:
+                                                "authentication/under_maintenance",
+                                          ),
                                         ],
                                       ),
                                     ].map((e) {

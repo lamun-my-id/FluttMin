@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutteradmin/screens/dashboard/ecommerce_screen.dart';
+import 'package:flutteradmin/screens/profile/profile_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +18,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const ECommerceScreen(),
+      routes: {
+        "dashboard/ecommerce": (_) => const ECommerceScreen(),
+        "profile": (_) => const ProfileScreen(),
+      },
     );
   }
 }

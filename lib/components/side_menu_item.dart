@@ -26,8 +26,12 @@ class _SideMenuItemState extends State<SideMenuItem> {
             setState(() {});
           },
           onTap: () {
-            showSubMenu = !showSubMenu;
-            setState(() {});
+            if ((value.subMenu ?? []).isNotEmpty) {
+              showSubMenu = !showSubMenu;
+              setState(() {});
+            } else {
+              Navigator.pushNamed(context, value.navigateTo);
+            }
           },
           child: Container(
             padding: const EdgeInsets.symmetric(
