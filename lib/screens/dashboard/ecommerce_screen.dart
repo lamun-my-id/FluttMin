@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutteradmin/components/side_menu_item.dart';
+import 'package:flutteradmin/components/wrapper_component.dart';
 import 'package:flutteradmin/resources/local_datas/color_data.dart';
 import 'package:flutteradmin/resources/models/menu_model.dart';
+import 'package:flutteradmin/utils/extensions/build_context_extension.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class ECommerceScreen extends StatefulWidget {
   const ECommerceScreen({super.key});
@@ -12,537 +16,708 @@ class ECommerceScreen extends StatefulWidget {
 
 class _ECommerceScreenState extends State<ECommerceScreen> {
   bool showMenu = false;
+  bool showProfile = false;
+  bool showMessage = false;
+  bool showNotification = false;
+
+  List<Map<String, dynamic>> summary = [
+    {
+      "value": 123456789,
+      "name": "Total Views",
+      "icon": Icons.visibility_outlined,
+      "compare": 0.43,
+    },
+    {
+      "value": 654321,
+      "name": "Total Profits",
+      "icon": Icons.card_travel_outlined,
+      "compare": 4.33,
+    },
+    {
+      "value": 2234,
+      "name": "Total Product",
+      "icon": Icons.shopping_bag_outlined,
+      "compare": 2.59,
+    },
+    {
+      "value": 3456,
+      "name": "Total Users",
+      "icon": Icons.group_outlined,
+      "compare": -0.95,
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return Material(
-      child: Stack(
-        children: [
-          Positioned(
-            left: 0,
-            top: 0,
-            child: SizedBox(
-              width: 300,
-              height: height,
-              child: Scaffold(
-                // backgroundColor: Colors.black,
-                backgroundColor: ColorData().greyDark,
-                body: SafeArea(
-                  child: SizedBox(
-                    height: height,
-                    width: width,
-                    child: Stack(
-                      children: [
-                        SizedBox(
-                          width: width,
-                          height: 80,
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                            ),
-                            // titleSpacing: 0,
-                            color: ColorData().greyDark,
-                            // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-                            child: const Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  height: 30,
-                                  width: 30,
-                                  child: Icon(
-                                    Icons.home,
-                                    color: Colors.white,
-                                    size: 30,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 8,
-                                ),
-                                Text(
-                                  "FlutterAdmin",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        SingleChildScrollView(
-                          padding: const EdgeInsets.only(
-                            top: 80,
-                            left: 16,
-                            right: 16,
-                          ),
-                          child: Column(
+    return WrapperComponent(
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 16,
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: context.margin(
+            excuse: 300,
+          )),
+          child: Column(
+            children: [
+              SizedBox(
+                width: width,
+                child: Builder(
+                  builder: (_) {
+                    return Row(
+                      children: List.generate(summary.length, (index) {
+                        Map<String, dynamic> value = summary[index];
+                        return Expanded(
+                          child: Row(
                             children: [
-                              const SizedBox(
-                                height: 16,
-                              ),
-                              Column(
-                                children: [
-                                  Container(
-                                    width: width,
-                                    height: 46,
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 16,
-                                    ),
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      "MENU",
-                                      style: TextStyle(
-                                        color: Colors.grey[100],
-                                        fontSize: 16,
-                                      ),
-                                    ),
+                              if (index != 0)
+                                const SizedBox(
+                                  width: 16,
+                                ),
+                              Expanded(
+                                child: Container(
+                                  height: 160,
+                                  width: 260,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                    vertical: 16,
                                   ),
-                                  Column(
-                                    children: [
-                                      MenuModel(
-                                        name: "Dashboard",
-                                        icon: Icons.widgets_outlined,
-                                        navigateTo: "dashboard",
-                                        subMenu: [
-                                          SubMenuModel(
-                                              name: "eCommerce",
-                                              navigateTo:
-                                                  "dashboard/ecommerce"),
-                                          SubMenuModel(
-                                              name: "Analitycs",
-                                              navigateTo:
-                                                  "dashboard/analitycs"),
-                                          SubMenuModel(
-                                              name: "Marketing",
-                                              navigateTo:
-                                                  "dashboard/marketing"),
-                                          SubMenuModel(
-                                              name: "CRM",
-                                              navigateTo: "dashboard/crm"),
-                                          SubMenuModel(
-                                              name: "Stocks",
-                                              navigateTo: "dashboard/stocks"),
-                                        ],
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        offset: const Offset(1, 1),
+                                        color: Colors.black.withOpacity(0.12),
+                                        blurRadius: 4,
                                       ),
-                                      MenuModel(
-                                        name: "Calendar",
-                                        icon: Icons.calendar_month_outlined,
-                                        navigateTo: "dashboard",
-                                      ),
-                                      MenuModel(
-                                        name: "Profile",
-                                        icon: Icons.account_box_outlined,
-                                        navigateTo: "dashboard",
-                                      ),
-                                      MenuModel(
-                                        name: "Task",
-                                        icon: Icons.list_alt_outlined,
-                                        navigateTo: "dashboard",
-                                        subMenu: [
-                                          SubMenuModel(
-                                              name: "List", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Kanban", navigateTo: ""),
-                                        ],
-                                      ),
-                                      MenuModel(
-                                        name: "Forms",
-                                        icon: Icons.document_scanner_outlined,
-                                        navigateTo: "dashboard",
-                                        subMenu: [
-                                          SubMenuModel(
-                                              name: "Form Elements",
-                                              navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Pro Form ELements",
-                                              navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Form Layout",
-                                              navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Pro Form Layout",
-                                              navigateTo: ""),
-                                        ],
-                                      ),
-                                      MenuModel(
-                                        name: "Tables",
-                                        icon: Icons.table_chart_outlined,
-                                        navigateTo: "dashboard",
-                                        subMenu: [
-                                          SubMenuModel(
-                                              name: "Tables", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Pro Tables",
-                                              navigateTo: ""),
-                                        ],
-                                      ),
-                                      MenuModel(
-                                        name: "Pages",
-                                        icon: Icons.web_outlined,
-                                        navigateTo: "dashboard",
-                                        subMenu: [
-                                          SubMenuModel(
-                                              name: "Settings", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "File Manager",
-                                              navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Data Tables",
-                                              navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Pricing Tables",
-                                              navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Error Page",
-                                              navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Faq's", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Teams", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Terms & Conditions",
-                                              navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Mail Success",
-                                              navigateTo: ""),
-                                        ],
-                                      ),
-                                    ].map((e) {
-                                      return Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 8),
-                                        child: SideMenuItem(value: e),
-                                      );
-                                    }).toList(),
+                                    ],
                                   ),
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  Container(
-                                    width: width,
-                                    height: 46,
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 16,
-                                    ),
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      "SUPPORT",
-                                      style: TextStyle(
-                                        color: Colors.grey[100],
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ),
-                                  Column(
-                                    children: [
-                                      MenuModel(
-                                        name: "Messages",
-                                        icon: Icons.mail_outline,
-                                        navigateTo: "dashboard",
-                                      ),
-                                      MenuModel(
-                                        name: "Inbox",
-                                        icon: Icons.inbox_outlined,
-                                        navigateTo: "dashboard",
-                                      ),
-                                      MenuModel(
-                                        name: "Invoice",
-                                        icon: Icons.inventory_outlined,
-                                        navigateTo: "dashboard",
-                                      ),
-                                    ].map((e) {
-                                      return Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 8),
-                                        child: SideMenuItem(value: e),
-                                      );
-                                    }).toList(),
-                                  ),
-                                ],
-                              ),
-                              Column(
-                                children: [
-                                  Container(
-                                    width: width,
-                                    height: 46,
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 16,
-                                    ),
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      "OTHERS",
-                                      style: TextStyle(
-                                        color: Colors.grey[100],
-                                        fontSize: 16,
-                                      ),
-                                    ),
-                                  ),
-                                  Column(
-                                    children: [
-                                      MenuModel(
-                                        name: "Charts",
-                                        icon: Icons.line_axis_outlined,
-                                        navigateTo: "dashboard",
-                                        subMenu: [
-                                          SubMenuModel(
-                                              name: "Basic Chart",
-                                              navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Advanced Chart",
-                                              navigateTo: ""),
-                                        ],
-                                      ),
-                                      MenuModel(
-                                        name: "UI Elements",
-                                        icon: Icons.now_widgets_outlined,
-                                        navigateTo: "dashboard",
-                                        subMenu: [
-                                          SubMenuModel(
-                                              name: "Accordion",
-                                              navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Alerts", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Avatar", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Badge", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Breadcrumb",
-                                              navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Buttons", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Buttons Group",
-                                              navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Cards", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Carousel", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Dropdowns",
-                                              navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Images", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "List", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Modals", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Notifications",
-                                              navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Pagination",
-                                              navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Popovers", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Progress", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Spinners", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Tabs", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Tooltips", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Videos", navigateTo: ""),
-                                        ],
-                                      ),
-                                      MenuModel(
-                                        name: "Authentication",
-                                        icon: Icons.logout_outlined,
-                                        navigateTo: "dashboard",
-                                        subMenu: [
-                                          SubMenuModel(
-                                              name: "Sign In", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Sign Up", navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Reset Password",
-                                              navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Coming Soon",
-                                              navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "2 Step Verification",
-                                              navigateTo: ""),
-                                          SubMenuModel(
-                                              name: "Under Maintenance",
-                                              navigateTo: ""),
-                                        ],
-                                      ),
-                                    ].map((e) {
-                                      return Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 8),
-                                        child: SideMenuItem(value: e),
-                                      );
-                                    }).toList(),
-                                  ),
-                                  SizedBox(
-                                    height: 100,
-                                    width: width,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ].reversed.toList(),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Scaffold(
-              backgroundColor: Colors.white,
-              body: SafeArea(
-                child: Stack(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                      ),
-                      height: 80,
-                      width: width,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            offset: const Offset(1, 1),
-                            color: Colors.black.withOpacity(0.12),
-                            blurRadius: 4,
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          const SizedBox(
-                            width: 300,
-                          ),
-                          Expanded(
-                            child: Container(
-                              height: 60,
-                              width: width,
-                              alignment: Alignment.center,
-                              child: const Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.search_outlined),
-                                  SizedBox(
-                                    width: 16,
-                                  ),
-                                  Expanded(
-                                    child: TextField(
-                                      decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.symmetric(
-                                            // vertical: 4,
-                                            ),
-                                        border: InputBorder.none,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          const Expanded(
-                            child: SizedBox(),
-                          ),
-                          Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                              color: Colors.grey[100],
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: const Icon(
-                              Icons.notifications_outlined,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 16,
-                          ),
-                          Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                              color: Colors.grey[100],
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: const Icon(
-                              Icons.chat_bubble_outline_outlined,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 16,
-                          ),
-                          SizedBox(
-                            height: 60,
-                            width: 250,
-                            child: Row(
-                              children: [
-                                Expanded(
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      const Text(
-                                        "Fulan bin Fulan",
-                                        style: TextStyle(
-                                          fontSize: 16,
+                                      Container(
+                                        height: 50,
+                                        width: 50,
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey[200]!,
+                                          borderRadius:
+                                              BorderRadius.circular(40),
+                                        ),
+                                        child: Icon(
+                                          value['icon'],
+                                          color: Colors.deepPurple,
                                         ),
                                       ),
-                                      Text(
-                                        "Sistem Administrator",
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          color: ColorData().greyDark,
+                                      const SizedBox(
+                                        height: 16,
+                                      ),
+                                      Expanded(
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Expanded(
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: [
+                                                  Text(
+                                                    "${value['value']}",
+                                                    style: const TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontSize: 24,
+                                                    ),
+                                                  ),
+                                                  const SizedBox(
+                                                    height: 4,
+                                                  ),
+                                                  Text(
+                                                    "${value['name']}",
+                                                    style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: Colors.grey[400]!,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                Icon(
+                                                  (value['compare'] ?? 0) > 0
+                                                      ? Icons
+                                                          .arrow_upward_outlined
+                                                      : Icons
+                                                          .arrow_downward_outlined,
+                                                  size: 16,
+                                                  color:
+                                                      (value['compare'] ?? 0) >
+                                                              0
+                                                          ? Colors.green
+                                                          : Colors.lightBlue,
+                                                ),
+                                                const SizedBox(
+                                                  width: 4,
+                                                ),
+                                                Text(
+                                                  "${value['compare']}%",
+                                                  style: TextStyle(
+                                                    color: (value['compare'] ??
+                                                                0) >
+                                                            0
+                                                        ? Colors.green
+                                                        : Colors.lightBlue,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ],
                                   ),
                                 ),
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                Container(
-                                  width: 50,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey[100],
-                                    borderRadius: BorderRadius.circular(60),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                const Icon(
-                                  Icons.keyboard_arrow_down_outlined,
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ].reversed.toList(),
+                              ),
+                            ],
+                          ),
+                        );
+                      }),
+                    );
+                  },
                 ),
               ),
-            ),
+              const SizedBox(
+                height: 16,
+              ),
+              SizedBox(
+                width: width,
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 6,
+                      child: Container(
+                        height: 400,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 16,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              offset: const Offset(1, 1),
+                              color: Colors.black.withOpacity(0.12),
+                              blurRadius: 4,
+                            ),
+                          ],
+                        ),
+                        child: SfCartesianChart(
+                          primaryXAxis: const CategoryAxis(),
+                          // Chart title
+                          title: const ChartTitle(
+                              text: 'Half yearly sales analysis'),
+                          // Enable legend
+                          legend: const Legend(
+                              isVisible: true, position: LegendPosition.top),
+                          // Enable tooltip
+                          tooltipBehavior: TooltipBehavior(enable: true),
+                          series: <CartesianSeries<_SalesData, String>>[
+                            AreaSeries<_SalesData, String>(
+                              markerSettings: const MarkerSettings(
+                                isVisible: true,
+                                height: 4,
+                                width: 4,
+                                shape: DataMarkerType.circle,
+                                borderWidth: 4,
+                                borderColor: Colors.purple,
+                              ),
+                              color: Colors.deepPurple[200]!.withOpacity(0.5),
+                              dataLabelSettings: const DataLabelSettings(
+                                isVisible: false,
+                                labelAlignment: ChartDataLabelAlignment.auto,
+                              ),
+                              dataSource: [
+                                _SalesData('Jan', 20),
+                                _SalesData('Feb', 10),
+                                _SalesData('Mar', 22),
+                                _SalesData('Apr', 32),
+                                _SalesData('May', 44),
+                                _SalesData('Jun', 23),
+                                _SalesData('Jul', 17),
+                                _SalesData('Aug', 19),
+                                _SalesData('Sep', 43),
+                                _SalesData('Okt', 51),
+                                _SalesData('Nov', 23),
+                                _SalesData('Des', 55),
+                              ],
+                              xValueMapper: (_SalesData sales, _) => sales.year,
+                              yValueMapper: (_SalesData sales, _) =>
+                                  sales.sales,
+                              name: 'Revenue',
+                            ),
+                            AreaSeries<_SalesData, String>(
+                              markerSettings: const MarkerSettings(
+                                isVisible: true,
+                                height: 4,
+                                width: 4,
+                                shape: DataMarkerType.circle,
+                                borderWidth: 3,
+                                borderColor: Colors.lightBlue,
+                              ),
+                              color: Colors.lightBlue[200]!.withOpacity(0.5),
+                              dataLabelSettings: const DataLabelSettings(
+                                isVisible: true,
+                                labelAlignment: ChartDataLabelAlignment.auto,
+                              ),
+                              dataSource: [
+                                _SalesData('Jan', 30),
+                                _SalesData('Feb', 20),
+                                _SalesData('Mar', 32),
+                                _SalesData('Apr', 42),
+                                _SalesData('May', 54),
+                                _SalesData('Jun', 33),
+                                _SalesData('Jul', 27),
+                                _SalesData('Aug', 29),
+                                _SalesData('Sep', 53),
+                                _SalesData('Okt', 61),
+                                _SalesData('Nov', 33),
+                                _SalesData('Des', 65),
+                              ],
+                              xValueMapper: (_SalesData sales, _) => sales.year,
+                              yValueMapper: (_SalesData sales, _) =>
+                                  sales.sales,
+                              name: 'Sales',
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    Expanded(
+                      flex: 3,
+                      child: Container(
+                        height: 400,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 16,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              offset: const Offset(1, 1),
+                              color: Colors.black.withOpacity(0.12),
+                              blurRadius: 4,
+                            ),
+                          ],
+                        ),
+                        child: SfCartesianChart(
+                          title: const ChartTitle(text: 'Profit this year'),
+                          primaryXAxis: const CategoryAxis(),
+                          primaryYAxis: const NumericAxis(
+                              minimum: 0, maximum: 100, interval: 10),
+                          legend: const Legend(
+                              isVisible: true, position: LegendPosition.top),
+                          tooltipBehavior: TooltipBehavior(enable: true),
+                          series: <CartesianSeries<_SalesData, String>>[
+                            ColumnSeries<_SalesData, String>(
+                              dataSource: [
+                                _SalesData('Jan', 20),
+                                _SalesData('Feb', 10),
+                                _SalesData('Mar', 22),
+                                _SalesData('Apr', 32),
+                                _SalesData('May', 44),
+                                _SalesData('Jun', 23),
+                                _SalesData('Jul', 17),
+                                _SalesData('Aug', 19),
+                                _SalesData('Sep', 43),
+                                _SalesData('Okt', 51),
+                                _SalesData('Nov', 23),
+                                _SalesData('Des', 55),
+                              ],
+                              xValueMapper: (_SalesData data, _) => data.year,
+                              yValueMapper: (_SalesData data, _) => data.sales,
+                              name: 'Revenue',
+                              color: Colors.purple,
+                            ),
+                            ColumnSeries<_SalesData, String>(
+                              dataSource: [
+                                _SalesData('Jan', 30),
+                                _SalesData('Feb', 20),
+                                _SalesData('Mar', 32),
+                                _SalesData('Apr', 42),
+                                _SalesData('May', 54),
+                                _SalesData('Jun', 33),
+                                _SalesData('Jul', 27),
+                                _SalesData('Aug', 29),
+                                _SalesData('Sep', 53),
+                                _SalesData('Okt', 61),
+                                _SalesData('Nov', 33),
+                                _SalesData('Des', 65),
+                              ],
+                              xValueMapper: (_SalesData data, _) => data.year,
+                              yValueMapper: (_SalesData data, _) => data.sales,
+                              name: 'Sales',
+                              color: Colors.lightBlue,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              SizedBox(
+                width: width,
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: Container(
+                        height: 400,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 16,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              offset: const Offset(1, 1),
+                              color: Colors.black.withOpacity(0.12),
+                              blurRadius: 4,
+                            ),
+                          ],
+                        ),
+                        child: SfCircularChart(
+                          title: const ChartTitle(text: 'Visitors analitycs'),
+                          tooltipBehavior: TooltipBehavior(enable: true),
+                          legend: const Legend(
+                            isVisible: true,
+                            position: LegendPosition.bottom,
+                          ),
+                          series: <CircularSeries<_SalesData, String>>[
+                            DoughnutSeries<_SalesData, String>(
+                              dataSource: [
+                                _SalesData('Desktop', 20),
+                                _SalesData('Mobile', 10),
+                                _SalesData('Tablet', 22),
+                                _SalesData('Unknown', 32),
+                              ],
+                              xValueMapper: (_SalesData data, _) => data.year,
+                              yValueMapper: (_SalesData data, _) => data.sales,
+                              name: 'Gold',
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    Expanded(
+                      flex: 6,
+                      child: Container(
+                        height: 400,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 16,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              offset: const Offset(1, 1),
+                              color: Colors.black.withOpacity(0.12),
+                              blurRadius: 4,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              SizedBox(
+                width: width,
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 6,
+                      child: Container(
+                        height: 600,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 16,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              offset: const Offset(1, 1),
+                              color: Colors.black.withOpacity(0.12),
+                              blurRadius: 4,
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: width,
+                              alignment: Alignment.centerLeft,
+                              child: const Text(
+                                "Top Channels",
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 32,
+                            ),
+                            Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8),
+                              height: 60,
+                              width: width,
+                              color: Colors.grey[50]!,
+                              child: Row(
+                                children: [
+                                  "SOURCE",
+                                  "VISITORS",
+                                  "REVENUES",
+                                  "SALES",
+                                  "CONVERSION"
+                                ].map((e) {
+                                  return Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 8,
+                                      ),
+                                      child: Text(
+                                        e,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }).toList(),
+                              ),
+                            ),
+                            Column(
+                              children: List.generate(5, (index) {
+                                return Container(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 8),
+                                  height: 80,
+                                  width: width,
+                                  decoration: BoxDecoration(
+                                    border: index != 0
+                                        ? Border(
+                                            top: BorderSide(
+                                              color: Colors.grey[400]!,
+                                            ),
+                                          )
+                                        : null,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      {
+                                        "color": Colors.black,
+                                        "value": "Google",
+                                      },
+                                      {
+                                        "color": Colors.black,
+                                        "value": "3.5K",
+                                      },
+                                      {
+                                        "color": Colors.green,
+                                        "value": "Rp. 520.234",
+                                      },
+                                      {
+                                        "color": Colors.black,
+                                        "value": "200",
+                                      },
+                                      {
+                                        "color": Colors.blue,
+                                        "value": "4.8%",
+                                      },
+                                    ].map((Map<String, dynamic> e) {
+                                      return Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 8,
+                                          ),
+                                          child: Text(
+                                            e['value'] ?? "-",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: e['color'],
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
+                                  ),
+                                );
+                              }),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    Expanded(
+                      flex: 3,
+                      child: Container(
+                        height: 600,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 16,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              offset: const Offset(1, 1),
+                              color: Colors.black.withOpacity(0.12),
+                              blurRadius: 4,
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: width,
+                              alignment: Alignment.centerLeft,
+                              child: const Text(
+                                "Chats",
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 32,
+                            ),
+                            Column(
+                              children: List.generate(6, (index) {
+                                return Container(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 16,
+                                  ),
+                                  width: width,
+                                  height: 80,
+                                  decoration: const BoxDecoration(),
+                                  child: Row(
+                                    children: [
+                                      Container(
+                                        height: 60,
+                                        width: 60,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(60),
+                                          color: Colors.grey[400]!,
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 16,
+                                      ),
+                                      Expanded(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Expanded(
+                                                  child: SizedBox(
+                                                    width: width,
+                                                    child: Text(
+                                                      "Orang Ke-${index + 1}",
+                                                      style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  "$index menit lalu",
+                                                  textAlign: TextAlign.end,
+                                                  style: TextStyle(
+                                                    fontSize: 10,
+                                                    color: Colors.grey[500]!,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              height: 4,
+                                            ),
+                                            SizedBox(
+                                              width: width,
+                                              child: Text(
+                                                "Percakapan Orang Ke-${index + 1}",
+                                                style: TextStyle(
+                                                  color: Colors.grey[500]!,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+            ],
           ),
-        ].reversed.toList(),
+        ),
       ),
     );
   }
+}
+
+class _SalesData {
+  _SalesData(this.year, this.sales);
+
+  final String year;
+  final double sales;
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutteradmin/components/side_sub_menu_item.dart';
 import 'package:flutteradmin/resources/models/menu_model.dart';
 
 class SideMenuItem extends StatefulWidget {
@@ -35,7 +36,7 @@ class _SideMenuItemState extends State<SideMenuItem> {
             width: width,
             height: 46,
             decoration: BoxDecoration(
-              color: onHover
+              color: onHover || showSubMenu
                   ? Colors.grey[100]!.withOpacity(0.1)
                   : Colors.transparent,
               borderRadius: BorderRadius.circular(4),
@@ -88,23 +89,8 @@ class _SideMenuItemState extends State<SideMenuItem> {
             ),
             child: Column(
               children: value.subMenu!.map((value) {
-                return InkWell(
-                  onTap: () {},
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                    ),
-                    height: 40,
-                    width: width,
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      value.name,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
+                return SideSubMenuItem(
+                  value: value,
                 );
               }).toList(),
             ),

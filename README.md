@@ -15,11 +15,11 @@ Everyone can use FlutterAdmin free. Visit <https://fluttmin.web.app/> for live d
 - First thing first, you should have bit knowledge about Flutter and Dart.
 - Github Knowledge.
 - Install Flutter.
-- Clone this Repository to your machine and change to `master` branch.
+- Clone this Repository to your machine and change to `main` branch.
 - Go to Cloned Folder.
 - In cli/bash run `flutter pub get` it will install dependency from `pubspec.yaml`.
 - After installation complete, to run try `flutter run -v`
-- Cool, Send urs changes in PR to `master` branch.
+- Cool, Send urs changes in PR to `main` branch.
 
 ## License
 
