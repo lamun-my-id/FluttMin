@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutteradmin/screens/charts/advanched_chart_screen.dart';
+import 'package:flutteradmin/screens/charts/basic_chart_screen.dart';
 import 'package:flutteradmin/screens/dashboard/ecommerce_screen.dart';
 import 'package:flutteradmin/screens/profile/profile_screen.dart';
 
@@ -21,6 +23,8 @@ class MyApp extends StatelessWidget {
       routes: {
         "dashboard/ecommerce": (_) => const ECommerceScreen(),
         "profile": (_) => const ProfileScreen(),
+        "charts/basic_chart": (_) => const BasicChartScreen(),
+        "charts/advanched_chart": (_) => const AdvanchedChartScreen(),
       },
     );
   }

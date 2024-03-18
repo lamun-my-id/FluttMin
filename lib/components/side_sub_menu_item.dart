@@ -17,7 +17,9 @@ class _SideSubMenuItemState extends State<SideSubMenuItem> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, value.navigateTo);
+      },
       onHover: (_) {
         onHover = _;
         setState(() {});
