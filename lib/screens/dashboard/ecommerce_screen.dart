@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutteradmin/components/charts/bar_chart.dart';
+import 'package:flutteradmin/components/charts/doughnut_chart.dart';
+import 'package:flutteradmin/components/charts/line_chart.dart';
 import 'package:flutteradmin/components/side_menu_item.dart';
 import 'package:flutteradmin/components/wrapper_component.dart';
 import 'package:flutteradmin/resources/local_datas/color_data.dart';
@@ -202,180 +205,18 @@ class _ECommerceScreenState extends State<ECommerceScreen> {
               ),
               SizedBox(
                 width: width,
-                child: Row(
+                child: const Row(
                   children: [
                     Expanded(
                       flex: 6,
-                      child: Container(
-                        height: 400,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 16,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              offset: const Offset(1, 1),
-                              color: Colors.black.withOpacity(0.12),
-                              blurRadius: 4,
-                            ),
-                          ],
-                        ),
-                        child: SfCartesianChart(
-                          primaryXAxis: const CategoryAxis(),
-                          // Chart title
-                          title: const ChartTitle(
-                              text: 'Half yearly sales analysis'),
-                          // Enable legend
-                          legend: const Legend(
-                              isVisible: true, position: LegendPosition.top),
-                          // Enable tooltip
-                          tooltipBehavior: TooltipBehavior(enable: true),
-                          series: <CartesianSeries<_SalesData, String>>[
-                            AreaSeries<_SalesData, String>(
-                              markerSettings: const MarkerSettings(
-                                isVisible: true,
-                                height: 4,
-                                width: 4,
-                                shape: DataMarkerType.circle,
-                                borderWidth: 4,
-                                borderColor: Colors.purple,
-                              ),
-                              color: Colors.deepPurple[200]!.withOpacity(0.5),
-                              dataLabelSettings: const DataLabelSettings(
-                                isVisible: false,
-                                labelAlignment: ChartDataLabelAlignment.auto,
-                              ),
-                              dataSource: [
-                                _SalesData('Jan', 20),
-                                _SalesData('Feb', 10),
-                                _SalesData('Mar', 22),
-                                _SalesData('Apr', 32),
-                                _SalesData('May', 44),
-                                _SalesData('Jun', 23),
-                                _SalesData('Jul', 17),
-                                _SalesData('Aug', 19),
-                                _SalesData('Sep', 43),
-                                _SalesData('Okt', 51),
-                                _SalesData('Nov', 23),
-                                _SalesData('Des', 55),
-                              ],
-                              xValueMapper: (_SalesData sales, _) => sales.year,
-                              yValueMapper: (_SalesData sales, _) =>
-                                  sales.sales,
-                              name: 'Revenue',
-                            ),
-                            AreaSeries<_SalesData, String>(
-                              markerSettings: const MarkerSettings(
-                                isVisible: true,
-                                height: 4,
-                                width: 4,
-                                shape: DataMarkerType.circle,
-                                borderWidth: 3,
-                                borderColor: Colors.lightBlue,
-                              ),
-                              color: Colors.lightBlue[200]!.withOpacity(0.5),
-                              dataLabelSettings: const DataLabelSettings(
-                                isVisible: true,
-                                labelAlignment: ChartDataLabelAlignment.auto,
-                              ),
-                              dataSource: [
-                                _SalesData('Jan', 30),
-                                _SalesData('Feb', 20),
-                                _SalesData('Mar', 32),
-                                _SalesData('Apr', 42),
-                                _SalesData('May', 54),
-                                _SalesData('Jun', 33),
-                                _SalesData('Jul', 27),
-                                _SalesData('Aug', 29),
-                                _SalesData('Sep', 53),
-                                _SalesData('Okt', 61),
-                                _SalesData('Nov', 33),
-                                _SalesData('Des', 65),
-                              ],
-                              xValueMapper: (_SalesData sales, _) => sales.year,
-                              yValueMapper: (_SalesData sales, _) =>
-                                  sales.sales,
-                              name: 'Sales',
-                            ),
-                          ],
-                        ),
-                      ),
+                      child: LineChart(),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       width: 16,
                     ),
                     Expanded(
                       flex: 3,
-                      child: Container(
-                        height: 400,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 16,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              offset: const Offset(1, 1),
-                              color: Colors.black.withOpacity(0.12),
-                              blurRadius: 4,
-                            ),
-                          ],
-                        ),
-                        child: SfCartesianChart(
-                          title: const ChartTitle(text: 'Profit this year'),
-                          primaryXAxis: const CategoryAxis(),
-                          primaryYAxis: const NumericAxis(
-                              minimum: 0, maximum: 100, interval: 10),
-                          legend: const Legend(
-                              isVisible: true, position: LegendPosition.top),
-                          tooltipBehavior: TooltipBehavior(enable: true),
-                          series: <CartesianSeries<_SalesData, String>>[
-                            ColumnSeries<_SalesData, String>(
-                              dataSource: [
-                                _SalesData('Jan', 20),
-                                _SalesData('Feb', 10),
-                                _SalesData('Mar', 22),
-                                _SalesData('Apr', 32),
-                                _SalesData('May', 44),
-                                _SalesData('Jun', 23),
-                                _SalesData('Jul', 17),
-                                _SalesData('Aug', 19),
-                                _SalesData('Sep', 43),
-                                _SalesData('Okt', 51),
-                                _SalesData('Nov', 23),
-                                _SalesData('Des', 55),
-                              ],
-                              xValueMapper: (_SalesData data, _) => data.year,
-                              yValueMapper: (_SalesData data, _) => data.sales,
-                              name: 'Revenue',
-                              color: Colors.purple,
-                            ),
-                            ColumnSeries<_SalesData, String>(
-                              dataSource: [
-                                _SalesData('Jan', 30),
-                                _SalesData('Feb', 20),
-                                _SalesData('Mar', 32),
-                                _SalesData('Apr', 42),
-                                _SalesData('May', 54),
-                                _SalesData('Jun', 33),
-                                _SalesData('Jul', 27),
-                                _SalesData('Aug', 29),
-                                _SalesData('Sep', 53),
-                                _SalesData('Okt', 61),
-                                _SalesData('Nov', 33),
-                                _SalesData('Des', 65),
-                              ],
-                              xValueMapper: (_SalesData data, _) => data.year,
-                              yValueMapper: (_SalesData data, _) => data.sales,
-                              name: 'Sales',
-                              color: Colors.lightBlue,
-                            ),
-                          ],
-                        ),
-                      ),
+                      child: BarChart(),
                     ),
                   ],
                 ),
@@ -387,46 +228,9 @@ class _ECommerceScreenState extends State<ECommerceScreen> {
                 width: width,
                 child: Row(
                   children: [
-                    Expanded(
+                    const Expanded(
                       flex: 3,
-                      child: Container(
-                        height: 400,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 16,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              offset: const Offset(1, 1),
-                              color: Colors.black.withOpacity(0.12),
-                              blurRadius: 4,
-                            ),
-                          ],
-                        ),
-                        child: SfCircularChart(
-                          title: const ChartTitle(text: 'Visitors analitycs'),
-                          tooltipBehavior: TooltipBehavior(enable: true),
-                          legend: const Legend(
-                            isVisible: true,
-                            position: LegendPosition.bottom,
-                          ),
-                          series: <CircularSeries<_SalesData, String>>[
-                            DoughnutSeries<_SalesData, String>(
-                              dataSource: [
-                                _SalesData('Desktop', 20),
-                                _SalesData('Mobile', 10),
-                                _SalesData('Tablet', 22),
-                                _SalesData('Unknown', 32),
-                              ],
-                              xValueMapper: (_SalesData data, _) => data.year,
-                              yValueMapper: (_SalesData data, _) => data.sales,
-                              name: 'Gold',
-                            ),
-                          ],
-                        ),
-                      ),
+                      child: DoughnutChart(),
                     ),
                     const SizedBox(
                       width: 16,
