@@ -49,23 +49,19 @@ class _WrapperComponentState extends State<WrapperComponent> {
                             // titleSpacing: 0,
                             color: ColorData().greyDark,
                             // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-                            child: const Row(
+                            child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
                                   height: 30,
                                   width: 30,
-                                  child: Icon(
-                                    Icons.home,
-                                    color: Colors.white,
-                                    size: 30,
-                                  ),
+                                  child: Image.asset("assets/logo.png"),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 8,
                                 ),
-                                Text(
+                                const Text(
                                   "FlutterAdmin",
                                   style: TextStyle(
                                     color: Colors.white,

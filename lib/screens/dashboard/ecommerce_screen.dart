@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutteradmin/components/charts/bar_chart.dart';
 import 'package:flutteradmin/components/charts/doughnut_chart.dart';
 import 'package:flutteradmin/components/charts/line_chart.dart';
-import 'package:flutteradmin/components/side_menu_item.dart';
 import 'package:flutteradmin/components/wrapper_component.dart';
-import 'package:flutteradmin/resources/local_datas/color_data.dart';
-import 'package:flutteradmin/resources/models/menu_model.dart';
 import 'package:flutteradmin/utils/extensions/build_context_extension.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 class ECommerceScreen extends StatefulWidget {
   const ECommerceScreen({super.key});
