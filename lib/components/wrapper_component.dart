@@ -339,8 +339,8 @@ class _WrapperComponentState extends State<WrapperComponent> {
                                             navigateTo: "ui_elements/alerts",
                                           ),
                                           SubMenuModel(
-                                            name: "Avatar",
-                                            navigateTo: "ui_elements/avatar",
+                                            name: "Avatars",
+                                            navigateTo: "ui_elements/avatars",
                                           ),
                                           SubMenuModel(
                                             name: "Badge",
