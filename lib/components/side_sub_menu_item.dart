@@ -35,7 +35,7 @@ class _SideSubMenuItemState extends State<SideSubMenuItem> {
           value.name,
           style: TextStyle(
             fontSize: 16,
-            color: onHover ? Colors.grey[100] : Colors.white,
+            color: onHover ? Colors.white : Colors.grey[300],
           ),
         ),
       ),
