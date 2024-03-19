@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutteradmin/components/side_menu_item.dart';
 import 'package:flutteradmin/resources/local_datas/color_data.dart';
 import 'package:flutteradmin/resources/models/menu_model.dart';
+import 'package:flutteradmin/utils/extensions/build_context_extension.dart';
 
 class WrapperComponent extends StatefulWidget {
   final Widget? child;
@@ -19,13 +20,19 @@ class _WrapperComponentState extends State<WrapperComponent> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    double width = context.width();
+    double height = context.height();
+    bool isDesktop = context.isDesktop();
+
     return Material(
       child: Stack(
         children: [
           Positioned(
-            left: 0,
+            left: isDesktop
+                ? 0
+                : showMenu
+                    ? 0
+                    : -300,
             top: 0,
             child: SizedBox(
               width: 300,
@@ -69,6 +76,24 @@ class _WrapperComponentState extends State<WrapperComponent> {
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
+                                const Expanded(
+                                  child: SizedBox(),
+                                ),
+                                if (!isDesktop)
+                                  InkWell(
+                                    onTap: () {
+                                      showMenu = !showMenu;
+                                      setState(() {});
+                                    },
+                                    child: SizedBox(
+                                      height: 40,
+                                      width: 40,
+                                      child: Icon(
+                                        Icons.arrow_back_outlined,
+                                        color: Colors.grey[200]!,
+                                      ),
+                                    ),
+                                  ),
                               ],
                             ),
                           ),
@@ -512,31 +537,80 @@ class _WrapperComponentState extends State<WrapperComponent> {
                         ),
                         child: Row(
                           children: [
-                            const SizedBox(
-                              width: 300,
-                            ),
+                            if (isDesktop)
+                              const SizedBox(
+                                width: 300,
+                              ),
+                            if (!isDesktop)
+                              Row(
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      showMenu = !showMenu;
+                                      setState(() {});
+                                    },
+                                    child: Container(
+                                      height: 40,
+                                      width: 40,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        border: Border.all(
+                                          color: Colors.grey[400]!,
+                                        ),
+                                      ),
+                                      child: const Icon(
+                                        Icons.menu_outlined,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    width: 8,
+                                  ),
+                                  Container(
+                                    height: 40,
+                                    width: 40,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                    ),
+                                    child: Image.asset("assets/logo.png"),
+                                  ),
+                                  const SizedBox(
+                                    width: 8,
+                                  ),
+                                ],
+                              ),
                             Expanded(
                               child: Container(
                                 height: 60,
                                 width: width,
                                 alignment: Alignment.center,
-                                child: const Row(
+                                child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Icon(Icons.search_outlined),
-                                    SizedBox(
-                                      width: 16,
-                                    ),
-                                    Expanded(
-                                      child: TextField(
-                                        decoration: InputDecoration(
-                                          contentPadding: EdgeInsets.symmetric(
-                                              // vertical: 4,
+                                    if (isDesktop)
+                                      const Expanded(
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Icon(Icons.search_outlined),
+                                            SizedBox(
+                                              width: 16,
+                                            ),
+                                            Expanded(
+                                              child: TextField(
+                                                decoration: InputDecoration(
+                                                  contentPadding:
+                                                      EdgeInsets.symmetric(
+                                                          // vertical: 4,
+                                                          ),
+                                                  border: InputBorder.none,
+                                                ),
                                               ),
-                                          border: InputBorder.none,
+                                            ),
+                                          ],
                                         ),
                                       ),
-                                    ),
                                   ],
                                 ),
                               ),
@@ -626,82 +700,127 @@ class _WrapperComponentState extends State<WrapperComponent> {
                             const SizedBox(
                               width: 16,
                             ),
-                            InkWell(
-                              onTap: () {
-                                showProfile = !showProfile;
-                                showMessage = false;
-                                showNotification = false;
-                                setState(() {});
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 8,
-                                ),
-                                height: 60,
-                                width: 250,
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.grey[400]!,
-                                  ),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                            Builder(
+                              builder: (_) {
+                                if (isDesktop) {
+                                  return InkWell(
+                                    onTap: () {
+                                      showProfile = !showProfile;
+                                      showMessage = false;
+                                      showNotification = false;
+                                      setState(() {});
+                                    },
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 8,
+                                      ),
+                                      height: 60,
+                                      width: 250,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.grey[400]!,
+                                        ),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Row(
                                         children: [
-                                          SizedBox(
-                                            width: width,
-                                            child: const Text(
-                                              "Fulan bin Fulan",
-                                              maxLines: 1,
-                                              textAlign: TextAlign.end,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                              ),
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                SizedBox(
+                                                  width: width,
+                                                  child: const Text(
+                                                    "Fulan bin Fulan",
+                                                    maxLines: 1,
+                                                    textAlign: TextAlign.end,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: width,
+                                                  child: Text(
+                                                    "Sistem Administrator",
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    textAlign: TextAlign.end,
+                                                    style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: Colors.grey[600],
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ),
-                                          SizedBox(
-                                            width: width,
-                                            child: Text(
-                                              "Sistem Administrator",
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.end,
-                                              style: TextStyle(
-                                                fontSize: 14,
-                                                color: Colors.grey[600],
-                                              ),
+                                          const SizedBox(
+                                            width: 8,
+                                          ),
+                                          Container(
+                                            width: 50,
+                                            height: 50,
+                                            decoration: BoxDecoration(
+                                              color: Colors.grey[100],
+                                              borderRadius:
+                                                  BorderRadius.circular(60),
                                             ),
+                                          ),
+                                          const SizedBox(
+                                            width: 8,
+                                          ),
+                                          Icon(
+                                            showProfile
+                                                ? Icons
+                                                    .keyboard_arrow_up_outlined
+                                                : Icons
+                                                    .keyboard_arrow_down_outlined,
                                           ),
                                         ],
                                       ),
                                     ),
-                                    const SizedBox(
-                                      width: 8,
+                                  );
+                                }
+                                return InkWell(
+                                  onTap: () {
+                                    showProfile = !showProfile;
+                                    showMessage = false;
+                                    showNotification = false;
+                                    setState(() {});
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 8,
                                     ),
-                                    Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey[100],
-                                        borderRadius: BorderRadius.circular(60),
-                                      ),
+                                    height: 60,
+                                    width: 60,
+                                    // decoration: BoxDecoration(
+                                    //   border: Border.all(
+                                    //     color: Colors.grey[400]!,
+                                    //   ),
+                                    //   borderRadius: BorderRadius.circular(10),
+                                    // ),
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          width: 50,
+                                          height: 50,
+                                          decoration: BoxDecoration(
+                                            color: Colors.grey[100],
+                                            borderRadius:
+                                                BorderRadius.circular(60),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    const SizedBox(
-                                      width: 8,
-                                    ),
-                                    Icon(
-                                      showProfile
-                                          ? Icons.keyboard_arrow_up_outlined
-                                          : Icons.keyboard_arrow_down_outlined,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )
+                                  ),
+                                );
+                              },
+                            ),
                           ],
                         ),
                       ),
@@ -835,7 +954,7 @@ class _WrapperComponentState extends State<WrapperComponent> {
                       if (showMessage)
                         Positioned(
                           top: 86,
-                          right: 266,
+                          right: isDesktop ? 266 : 16,
                           child: Container(
                             width: 300,
                             height: 369,
@@ -965,7 +1084,7 @@ class _WrapperComponentState extends State<WrapperComponent> {
                       if (showNotification)
                         Positioned(
                           top: 86,
-                          right: 326,
+                          right: isDesktop ? 326 : 76,
                           child: Container(
                             width: 300,
                             height: 369,
@@ -1069,7 +1188,7 @@ class _WrapperComponentState extends State<WrapperComponent> {
                       Positioned(
                         top: 80,
                         bottom: 0,
-                        left: 300,
+                        left: isDesktop ? 300 : 0,
                         right: 0,
                         child: Container(
                           width: width,

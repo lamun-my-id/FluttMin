@@ -56,11 +56,11 @@ class _ECommerceScreenState extends State<ECommerceScreen> {
           vertical: 16,
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: context.margin(
-              excuse: 300,
-            ),
-          ),
+          padding: const EdgeInsets.symmetric(
+              // horizontal: context.margin(
+              //   excuse: 300,
+              // ),
+              ),
           child: Column(
             children: [
               SizedBox(
