@@ -794,8 +794,8 @@ class _WrapperComponentState extends State<WrapperComponent> {
                                   },
                                   child: Container(
                                     padding: const EdgeInsets.symmetric(
-                                      horizontal: 8,
-                                    ),
+                                        // horizontal: 8,
+                                        ),
                                     height: 60,
                                     width: 60,
                                     // decoration: BoxDecoration(
