@@ -1,13 +1,13 @@
-# [FlutterAdmin -  Admin Dashboard](https://fluttmin.web.app)
+# [FluttMin -  Admin Dashboard for Flutter](https://fluttmin.web.app)
 
-**FlutterAdmin** is a fully responsive dashboard template for Flutter.
+**FluttMin** is a fully responsive dashboard template for Flutter.
 Easy customizable and easy to use. Responsive from small mobile devices to large desktops.
 
 ## Looking for Premium Templates?
 
-Everyone can use FlutterAdmin free. Visit <https://fluttmin.web.app/> for live demo.
+Everyone can use FluttMin free. Visit <https://fluttmin.web.app/> for live demo.
 
-!["FlutterAdmin Showcase"](https://github.com/lamun-my-id/FlutterAdmin/blob/master/demoscreen.png?raw=true "FlutterAdmin Showcase")
+!["FluttMin Showcase"](https://github.com/lamun-my-id/FluttMin/blob/master/demoscreen.png?raw=true "FluttMin Showcase")
 
 ## Contributing
 
@@ -23,5 +23,5 @@ Everyone can use FlutterAdmin free. Visit <https://fluttmin.web.app/> for live d
 
 ## License
 
-FlutterAdmin is an open source project by [fluttmin.web.app](https://fluttmin.web.app) that is licensed under [MIT](https://opensource.org/licenses/MIT).
-FlutterAdmin reserves the right to change the license of future releases.
+FluttMin is an open source project by [fluttmin.web.app](https://fluttmin.web.app) that is licensed under [MIT](https://opensource.org/licenses/MIT).
+FluttMin reserves the right to change the license of future releases.
