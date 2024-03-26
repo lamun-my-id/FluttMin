@@ -7,7 +7,7 @@ Easy customizable and easy to use. Responsive from small mobile devices to large
 
 Everyone can use FlutterAdmin free. Visit <https://fluttmin.web.app/> for live demo.
 
-!["FlutterAdmin Showcase"](https://github.com/lamun-my-id/FlutterAdmin/blob/main/demoscreen.png?raw=true "FlutterAdmin Showcase")
+!["FlutterAdmin Showcase"](https://github.com/lamun-my-id/FlutterAdmin/blob/master/demoscreen.png?raw=true "FlutterAdmin Showcase")
 
 ## Contributing
 
