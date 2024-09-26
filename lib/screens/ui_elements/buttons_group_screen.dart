@@ -10,6 +10,8 @@ class ButtonsGroupScreen extends StatefulWidget {
 class _ButtonsGroupScreenState extends State<ButtonsGroupScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

@@ -28,7 +28,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           child: Column(
             children: [
+              SizedBox(
+                height: 60,
+                width: width,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        "Profile",
+                        style: TextStyle(
+                          fontSize: 22,
+                          color: Colors.grey[600],
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, "#");
+                          },
+                          child: const Text("Dashboard"),
+                        ),
+                        const Text(" / "),
+                        const Text(
+                          "Profile",
+                          style: TextStyle(
+                            color: Colors.purple,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
               Container(
+                // constraints: const BoxConstraints(maxWidth: 360),
                 width: width,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -42,7 +80,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 child: Column(
                   children: [
-                    Container(
+                    SizedBox(
                       height: 360,
                       width: width,
                       child: Stack(
@@ -50,21 +88,91 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         children: [
                           Positioned(
                             bottom: 0,
-                            child: Container(
+                            child: SizedBox(
                               height: 160,
                               width: 160,
-                              decoration: BoxDecoration(
-                                color: Colors.grey[200]!,
-                                borderRadius: BorderRadius.circular(100),
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    height: 160,
+                                    width: 160,
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey[100]!,
+                                      borderRadius: BorderRadius.circular(100),
+                                      border: Border.all(
+                                        color: Colors.white,
+                                        width: 8,
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    bottom: 16,
+                                    right: 16,
+                                    child: Container(
+                                      height: 40,
+                                      width: 40,
+                                      decoration: BoxDecoration(
+                                        color: Colors.purple,
+                                        borderRadius: BorderRadius.circular(40),
+                                      ),
+                                      child: const Icon(
+                                        Icons.camera_alt_outlined,
+                                        color: Colors.white,
+                                        size: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
                           Positioned(
                             top: 0,
+                            right: 0,
+                            left: 0,
+                            // bottom: 0,
                             child: Container(
                               height: 300,
                               width: width,
-                              color: Colors.lightBlue[200]!,
+                              color: Colors.purple[200]!,
+                              child: Stack(
+                                children: [
+                                  Positioned(
+                                    bottom: 16,
+                                    right: 16,
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 16,
+                                        vertical: 8,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: Colors.purple,
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: const Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.camera_alt_outlined,
+                                            color: Colors.white,
+                                            size: 20,
+                                          ),
+                                          SizedBox(
+                                            width: 8,
+                                          ),
+                                          Text(
+                                            "Edit",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ].reversed.toList(),

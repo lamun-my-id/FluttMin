@@ -10,6 +10,8 @@ class FormLayoutScreen extends StatefulWidget {
 class _FormLayoutScreenState extends State<FormLayoutScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

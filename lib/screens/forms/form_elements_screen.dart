@@ -10,6 +10,8 @@ class FormElementsScreen extends StatefulWidget {
 class _FormElementsScreenState extends State<FormElementsScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

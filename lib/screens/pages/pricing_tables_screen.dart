@@ -10,6 +10,8 @@ class PricingTablesScreen extends StatefulWidget {
 class _PricingTablesScreenState extends State<PricingTablesScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

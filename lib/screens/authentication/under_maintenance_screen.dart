@@ -10,6 +10,8 @@ class UnderMaintenanceScreen extends StatefulWidget {
 class _UnderMaintenanceScreenState extends State<UnderMaintenanceScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

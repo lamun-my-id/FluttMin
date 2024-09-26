@@ -10,6 +10,8 @@ class MailSuccessScreen extends StatefulWidget {
 class _MailSuccessScreenState extends State<MailSuccessScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

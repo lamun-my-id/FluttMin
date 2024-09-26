@@ -10,6 +10,8 @@ class PopoversScreen extends StatefulWidget {
 class _PopoversScreenState extends State<PopoversScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

@@ -10,6 +10,8 @@ class ModalsScreen extends StatefulWidget {
 class _ModalsScreenState extends State<ModalsScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

@@ -10,6 +10,8 @@ class ImagesScreen extends StatefulWidget {
 class _ImagesScreenState extends State<ImagesScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

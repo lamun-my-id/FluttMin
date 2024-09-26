@@ -10,6 +10,8 @@ class DataTablesScreen extends StatefulWidget {
 class _DataTablesScreenState extends State<DataTablesScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

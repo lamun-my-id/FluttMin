@@ -72,6 +72,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const ECommerceScreen(),
       routes: {
+        "#": (_) => const ECommerceScreen(),
         "authentication/coming_soon": (_) => const ComingSoonScreen(),
         "authentication/reset_password": (_) => const ResetPasswordScreen(),
         "authentication/sign_in": (_) => const SignInScreen(),

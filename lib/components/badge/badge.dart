@@ -31,10 +31,11 @@ class _BadgeState extends State<Badge> {
                 ? widget.color
                 : Colors.transparent,
         border: Border.all(
-            color: widget.type == BadgeType.badge1 ||
-                    widget.type == BadgeType.badge3
-                ? Colors.transparent
-                : widget.color),
+          color:
+              widget.type == BadgeType.badge1 || widget.type == BadgeType.badge3
+                  ? Colors.transparent
+                  : widget.color,
+        ),
         borderRadius: BorderRadius.circular(
             widget.type == BadgeType.badge1 || widget.type == BadgeType.badge2
                 ? 4

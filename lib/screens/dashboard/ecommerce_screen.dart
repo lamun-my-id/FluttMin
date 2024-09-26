@@ -20,25 +20,25 @@ class _ECommerceScreenState extends State<ECommerceScreen> {
 
   List<Map<String, dynamic>> summary = [
     {
-      "value": 123456789,
+      "value": "123.456.789",
       "name": "Total Views",
       "icon": Icons.visibility_outlined,
       "compare": 0.43,
     },
     {
-      "value": 654321,
+      "value": "654.321",
       "name": "Total Profits",
       "icon": Icons.card_travel_outlined,
       "compare": 4.33,
     },
     {
-      "value": 2234,
+      "value": "2.234",
       "name": "Total Product",
       "icon": Icons.shopping_bag_outlined,
       "compare": 2.59,
     },
     {
-      "value": 3456,
+      "value": "3.456",
       "name": "Total Users",
       "icon": Icons.group_outlined,
       "compare": -0.95,

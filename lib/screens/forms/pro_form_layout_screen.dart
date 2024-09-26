@@ -10,6 +10,8 @@ class ProFormLayoutScreen extends StatefulWidget {
 class _ProFormLayoutScreenState extends State<ProFormLayoutScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

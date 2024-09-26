@@ -10,6 +10,8 @@ class MarketingScreen extends StatefulWidget {
 class _MarketingScreenState extends State<MarketingScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

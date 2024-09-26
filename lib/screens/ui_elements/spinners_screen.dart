@@ -10,6 +10,8 @@ class SpinnersScreen extends StatefulWidget {
 class _SpinnersScreenState extends State<SpinnersScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

@@ -10,6 +10,8 @@ class DropdownsScreen extends StatefulWidget {
 class _DropdownsScreenState extends State<DropdownsScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

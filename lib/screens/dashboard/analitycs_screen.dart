@@ -10,6 +10,8 @@ class AnalitycsScreen extends StatefulWidget {
 class _AnalitycsScreenState extends State<AnalitycsScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

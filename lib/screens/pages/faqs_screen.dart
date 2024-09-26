@@ -10,6 +10,8 @@ class FaQsScreen extends StatefulWidget {
 class _FaQsScreenState extends State<FaQsScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

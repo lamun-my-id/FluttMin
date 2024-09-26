@@ -10,6 +10,8 @@ class ErrorPageScreen extends StatefulWidget {
 class _ErrorPageScreenState extends State<ErrorPageScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }

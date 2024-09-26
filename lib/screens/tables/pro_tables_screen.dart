@@ -10,6 +10,8 @@ class ProTablesScreen extends StatefulWidget {
 class _ProTablesScreenState extends State<ProTablesScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+    );
   }
 }
